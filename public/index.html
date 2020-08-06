@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MVVM demo</title>
 </head>
 <body>
-    <div id="h1">
-        <span v-on:click="tap" name="11">{{11}}</span>
-    </div>
     <div id="app">
         <h1>{{name}}</h1>
+        <input type="text" v-model="name">
+        <button v-on:click="init">init</button>
     </div>
     <script src="../dist/bundle.js"></script>
     <script>
@@ -22,6 +21,9 @@
         methods: {
             foo(){
                 console.log('foo')
+            },
+            init(){
+                this.name = 'fang'
             }
         },
     })

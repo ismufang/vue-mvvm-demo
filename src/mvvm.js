@@ -1,6 +1,4 @@
 import Observer from './observer'
-import watcher from './watcher'
-import dep from './dep'
 import Compile from './compile'
 
 export default class MVVM {
@@ -10,10 +8,6 @@ export default class MVVM {
         this.$el = typeof options.el === 'string' ? document.querySelector(options.el) : options.el
 
         this.proxyKeys(this.$data)
-
-        // Object.keys(this.$data).forEach(key=>{
-        //     this.proxyKeys(key)
-        // })
 
         if(options.methods && Object.keys(options.methods).length){
             Object.keys(options.methods).forEach(item => {
@@ -39,14 +33,5 @@ export default class MVVM {
                 }
             })
         })
-        
-        // const data = new Proxy(this.$data, {
-        //     get(target, key){
-        //         Reflect(target, key)
-        //     },
-        //     set(target, key, value){
-        //         Reflect(target, key, value)
-        //     }
-        // })
     }
 }

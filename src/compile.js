@@ -89,9 +89,9 @@ export default class Compile {
 
     eventUpdater(node, key, attrName){
         let eventType = attrName.split(':')[1];
-        let cb = this.vm.methods && this.vm.methods[key]
+        let cb = this.vm[key]
         
-        if(eventType, cb){
+        if(eventType && cb){
             node.addEventListener(eventType, cb.bind(this.vm), false)
         }
     }
@@ -102,7 +102,7 @@ export default class Compile {
     }
 
     isEventDirective(attrName) {
-        return dir.indexOf('on:') === 0;
+        return attrName.indexOf('on:') === 0;
     }
 
     // 判断节点是否是文本节点
