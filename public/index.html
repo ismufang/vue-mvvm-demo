@@ -6,12 +6,23 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="app"></div>
+    <div id="h1">
+        <span v-on:click="tap" name="11">{{11}}</span>
+    </div>
+    <div id="app">
+        <h1>{{name}}</h1>
+    </div>
     <script src="../dist/bundle.js"></script>
     <script>
     const vm = new MVVM({
+        el: '#app',
         data: {
             name: 'fang'
+        },
+        methods: {
+            foo(){
+                console.log('foo')
+            }
         },
     })
     console.log(vm)

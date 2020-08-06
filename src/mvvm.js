@@ -1,33 +1,45 @@
-import { observe } from './observer'
+import Observer from './observer'
 import watcher from './watcher'
 import dep from './dep'
+import Compile from './compile'
 
 export default class MVVM {
     constructor(options){
-        this.options = options
+        this.$options = options
         this.$data = options.data;
-        console.log(this.options)
+        this.$el = typeof options.el === 'string' ? document.querySelector(options.el) : options.el
 
-        Object.keys(this.$data).forEach(key=>{
-            this.proxyKeys(key)
-        })
+        this.proxyKeys(this.$data)
 
-        observe(this.$data)
+        // Object.keys(this.$data).forEach(key=>{
+        //     this.proxyKeys(key)
+        // })
+
+        if(options.methods && Object.keys(options.methods).length){
+            Object.keys(options.methods).forEach(item => {
+                this[item] = options.methods[item]
+            })
+        }
+
+        new Observer(this.$data)
+        new Compile(this)
     }
 
     // 把data数据绑定到this上
-    proxyKeys(key) {
-        let self = this
-        Object.defineProperty(this, key, {
-            configurable: true,
-            enumerable: true,
-            get(){
-                return self.$data[key]
-            },
-            set(value){
-                self.$data[key] = value
-            }
+    proxyKeys(data) {
+        Object.keys(data).forEach(key => {
+            Object.defineProperty(this, key, {
+                configurable: true,
+                enumerable: true,
+                get(){
+                    return this.$data[key]
+                },
+                set(value){
+                    this.$data[key] = value
+                }
+            })
         })
+        
         // const data = new Proxy(this.$data, {
         //     get(target, key){
         //         Reflect(target, key)
