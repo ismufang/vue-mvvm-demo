@@ -1,0 +1,18 @@
+{
+  "name": "vue-mvvm-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ismufang/vue-mvvm-demo.git",
+  "author": "fanghao <446379625@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
