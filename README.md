@@ -6,4 +6,12 @@
 
 3、实现一个订阅者 `Watcher`，可以收到属性的变化通知并执行相应的方法，从而更新视图；
 
-## yarn build
+## develop
+```
+yarn dev
+```
+
+## production
+```
+yarn build
+```

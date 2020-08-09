@@ -7,23 +7,28 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{name}}</h1>
+        <h1>{{title}}</h1>
+        <div v-html="cnt"></div>
+        <div>{{name}}</div>
         <input type="text" v-model="name">
         <button v-on:click="init">init</button>
     </div>
-    <script src="../dist/bundle.js"></script>
+    <!-- <script src="../dist/bundle.js"></script> -->
+    <script src="./src/index.js"></script>
     <script>
     const vm = new MVVM({
         el: '#app',
         data: {
-            name: 'fang'
+            title: 'vue mvvm demo',
+            name: 'v-model',
+            cnt: "<div class='cnt' style=\"color: red\"><h3>v-html</h3><span>this is v-html cnntent</span></div>"
         },
         methods: {
             foo(){
                 console.log('foo')
             },
             init(){
-                this.name = 'fang'
+                this.name = 'v-model'
             }
         },
     })

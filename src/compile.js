@@ -75,6 +75,10 @@ export default class Compile {
             node.textContent = newValue
         })
     }
+    htmlUpdater(node, value ,key){
+        // console.log(node, value, key)
+        node.innerHTML = value
+    }
     // v-model
     modelUpdater(node, value, key) {
         node.value = value
