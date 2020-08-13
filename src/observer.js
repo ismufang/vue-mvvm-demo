@@ -15,6 +15,7 @@ import Dep from './dep'
         },this)
     }
 
+    // 当前函数的value值会在当前作用域行程闭包，方便响应式数据使用
     defineReactive(data, key, value){
         let self = this
         // 每个属性上都有一个dep订阅器，复制收集订阅者，发送通知
@@ -32,7 +33,7 @@ import Dep from './dep'
             },
             set(newVal){
                 if (newVal === value) return
-                value = newVal;
+                value = newVal; // 更新value的值
                 self.walk(newVal) // 如果新赋值是对象，将对象转为响应式的
                 // 更新通知订阅者
                 dep.notify();
